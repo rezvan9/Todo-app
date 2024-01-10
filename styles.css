@@ -1,0 +1,96 @@
+html {
+  font-size: 62.5%;
+}
+
+h1,
+h5 {
+  font-family: "Caveat", cursive;
+  color: #1b4242;
+  text-align: center;
+}
+
+h1 {
+  padding-bottom: 0;
+  margin-bottom: 0;
+  font-size: 5rem;
+}
+
+h5 {
+  margin-top: 1rem;
+  padding-top: 0;
+  color: #5c8374;
+  font-size: 2rem;
+}
+
+input,
+select,
+button {
+  padding: 0.7rem;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+}
+
+button > i {
+  pointer-events: none;
+}
+
+.container {
+  margin: 1rem auto;
+  width: 450px;
+  background-color: #9ec8b9;
+  border-radius: 8px;
+  padding: 0.2rem 2rem;
+  font-size: 1.5rem;
+}
+
+.container,
+.todo {
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.form-container {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.todo-add {
+  color: #fff;
+  background-color: #092635;
+}
+
+.todolist {
+  font-family: cursive;
+  list-style: none;
+  color: #092635;
+  padding: 0;
+}
+
+.todo {
+  background-color: #5c8374;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+  margin-bottom: 1rem;
+}
+
+.todo p {
+  flex-grow: 1;
+}
+
+.completed {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+.todo button {
+  width: 2rem;
+  background-color: #5c8374;
+  cursor: pointer;
+  margin-left: 0.5rem;
+  color: #092635;
+}
