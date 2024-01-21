@@ -34,15 +34,16 @@ function addNewTodo(e) {
   filterTodos();
 }
 
-function createTodos(todos){
+function createTodos(todos) {
   //create todos on dom
   result = "";
 
   todos.forEach((todo) => {
-    
     result += `<li class="todo">
               <p class="todo__title">${todo.title}</p>
-              <span class="todo__createdAt">${new Date(todo.createdAt).toLocaleDateString("fa-IR")}</span>
+              <span class="todo__createdAt">${new Date(
+                todo.createdAt
+              ).toLocaleDateString("fa-IR")}</span>
               <button data-todo-id=${todo.id} class="todo__check">
                 <i class="fa-regular fa-circle-check"></i>
               </button>
@@ -53,7 +54,12 @@ function createTodos(todos){
   });
 
   todoList.innerHTML = result;
-  todoInput.value ="";
+  todoInput.value = "";
+
+  const removeBtns = [...document.querySelectorAll(".todo__remove")];
+  removeBtns.forEach((btn) => btn.addEventListener("click", removeTodo));
+
+  const checkBtns = [...document.querySelectorAll(".todo__check")];
 }
 
 function filterTodos(e) {
@@ -75,4 +81,11 @@ function filterTodos(e) {
     default:
       createTodos(todos);
   }
+}
+
+function removeTodo(e) {
+  // console.log(e.target.dataset.todoId);
+  const todoId = Number(e.target.dataset.todoId);
+  todos = todos.filter((t) => t.id !== todoId);
+  createTodos(todos);
 }
