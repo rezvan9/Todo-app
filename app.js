@@ -99,3 +99,17 @@ function checkTodo(e) {
   todo.isCompleted = !todo.isCompleted;
   filterTodos();
 }
+
+//localStorage
+
+function getAllTodos() {
+  const savedTodos = JSON.parse(localStorage.setItem("todos")) || [];
+  return savedTodos;
+}
+
+function saveTodo(todo) {
+  const savedTodos = getAllTodos();
+  savedTodos.push(todo);
+  localStorage.setItem("todos",JSON.stringify(savedTodos));
+  return savedTodos
+}
