@@ -65,7 +65,7 @@ function createTodos(todos) {
   checkBtns.forEach((btn) => btn.addEventListener("click", checkTodo));
 }
 
-function filterTodos(e) {
+function filterTodos() {
   switch (filterValue) {
     case "all": {
       createTodos(todos);
@@ -90,12 +90,12 @@ function removeTodo(e) {
   // console.log(e.target.dataset.todoId);
   const todoId = Number(e.target.dataset.todoId);
   todos = todos.filter((t) => t.id !== todoId);
-  createTodos(todos);
+  filterTodos();
 }
 
 function checkTodo(e) {
   const todoId = Number(e.target.dataset.todoId);
   const todo = todos.find((t) => t.id === todoId);
   todo.isCompleted = !todo.isCompleted;
-  createTodos(todos);
+  filterTodos();
 }
