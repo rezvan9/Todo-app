@@ -1,4 +1,4 @@
-let todos = [];
+// let todos = [];
 let filterValue = "all";
 
 //selecting:
@@ -16,6 +16,11 @@ selectFilter.addEventListener("change", (e) => {
   filterTodos();
 });
 
+document.addEventListener("DOMContentLoaded", (e) => {
+  const todos = getAllTodos();
+  createTodos(todos);
+});
+
 //functions:
 
 function addNewTodo(e) {
@@ -30,7 +35,8 @@ function addNewTodo(e) {
     isCompleted: false,
   };
 
-  todos.push(newTodo);
+  // todos.push(newTodo);
+  saveTodo(newTodo);
   filterTodos();
 }
 
@@ -46,6 +52,9 @@ function createTodos(todos) {
               <span class="todo__createdAt">${new Date(
                 todo.createdAt
               ).toLocaleDateString("fa-IR")}</span>
+              <button class="todo__edit">
+              <i class="fa-solid fa-pen"></i>
+            </button>
               <button data-todo-id=${todo.id} class="todo__check">
                 <i class="fa-regular fa-circle-check"></i>
               </button>
@@ -66,6 +75,8 @@ function createTodos(todos) {
 }
 
 function filterTodos() {
+  const todos = getAllTodos();
+
   switch (filterValue) {
     case "all": {
       createTodos(todos);
@@ -88,28 +99,36 @@ function filterTodos() {
 
 function removeTodo(e) {
   // console.log(e.target.dataset.todoId);
+  let todos = getAllTodos();
   const todoId = Number(e.target.dataset.todoId);
   todos = todos.filter((t) => t.id !== todoId);
+  saveAllTodos(todos);
   filterTodos();
 }
 
 function checkTodo(e) {
+  const todos = getAllTodos();
   const todoId = Number(e.target.dataset.todoId);
   const todo = todos.find((t) => t.id === todoId);
   todo.isCompleted = !todo.isCompleted;
+  saveAllTodos(todos);
   filterTodos();
 }
 
 //localStorage
 
 function getAllTodos() {
-  const savedTodos = JSON.parse(localStorage.setItem("todos")) || [];
+  const savedTodos = JSON.parse(localStorage.getItem("todos")) || [];
   return savedTodos;
 }
 
 function saveTodo(todo) {
   const savedTodos = getAllTodos();
   savedTodos.push(todo);
-  localStorage.setItem("todos",JSON.stringify(savedTodos));
-  return savedTodos
+  localStorage.setItem("todos", JSON.stringify(savedTodos));
+  return savedTodos;
+}
+
+function saveAllTodos(todos) {
+  localStorage.setItem("todos", JSON.stringify(todos));
 }
