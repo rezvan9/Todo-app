@@ -52,7 +52,7 @@ function createTodos(todos) {
               <span class="todo__createdAt">${new Date(
                 todo.createdAt
               ).toLocaleDateString("fa-IR")}</span>
-              <button class="todo__edit">
+              <button data-todo-id=${todo.id} class="todo__edit">
               <i class="fa-solid fa-pen"></i>
             </button>
               <button data-todo-id=${todo.id} class="todo__check">
@@ -72,6 +72,9 @@ function createTodos(todos) {
 
   const checkBtns = [...document.querySelectorAll(".todo__check")];
   checkBtns.forEach((btn) => btn.addEventListener("click", checkTodo));
+
+  const editBtns = [...document.querySelectorAll(".todo__edit")];
+  editBtns.forEach((btn) => btn.addEventListener("click", editTodo));
 }
 
 function filterTodos() {
@@ -113,6 +116,14 @@ function checkTodo(e) {
   todo.isCompleted = !todo.isCompleted;
   saveAllTodos(todos);
   filterTodos();
+}
+
+function editTodo(e) {
+  const newInput = 
+  const todos = getAllTodos();
+  const todoId = Number(e.target.dataset.todoId);
+  const todo = todos.find((t) => t.id === todoId);
+  todo.title = 
 }
 
 //localStorage
