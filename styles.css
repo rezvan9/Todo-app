@@ -3,7 +3,8 @@ html {
 }
 
 h1,
-h5 {
+h5
+ {
   font-family: "Caveat", cursive;
   color: #1b4242;
   text-align: center;
@@ -29,6 +30,7 @@ button {
   border-radius: 5px;
   outline: none;
   border: none;
+  box-sizing: border-box;
 }
 
 button > i {
@@ -59,6 +61,7 @@ button > i {
 .todo-add {
   color: #fff;
   background-color: #092635;
+  cursor: pointer;
 }
 
 .todolist {
@@ -95,22 +98,38 @@ button > i {
   color: #092635;
 }
 
+/* ------------------------- modal ----------------------- */
+
 .modal {
   width: 350px;
   padding: 1rem;
-  min-height: 70px;
-  background-color: white;
-  border: 1px solid #ddd;
+  background-color: #9ec8b9;
+  border: 2px solid #092635;
   border-radius: 15px;
+  position: relative;
+  top: -30rem;
+  left: 13.7rem;
+  z-index: 2;
 }
 
-/* .modal-container {
-  position: relative;
-} */
+.hidden {
+  display: none;
+}
+
+.modal-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
 .form-wrapper {
-  margin-top: 10px;
-  background-color: red;
+  margin-top: 5px;
+}
+
+.form-wrapper input {
+  width: 85%;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .modal-container form {
@@ -120,7 +139,29 @@ button > i {
   align-items: center;
 }
 
-.btn-close {
-  float: right;
-  margin-top: 0;
+.close-btn {
+  align-self: flex-end;
+}
+
+.edit-btn,
+.close-btn {
+  background-color: #092635;
+  color: #fff;
+  cursor: pointer;
+}
+
+.edit-btn {
+  padding: 1rem 4rem;
+}
+
+.overlay{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(138, 136, 136, 0.5);
+  backdrop-filter: blur(3px);
 }

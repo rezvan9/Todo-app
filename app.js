@@ -7,6 +7,10 @@ const todoInput = document.querySelector(".todo-input");
 const todoForm = document.querySelector(".todo-form");
 const todoList = document.querySelector(".todolist");
 const selectFilter = document.querySelector(".todo-filter");
+const closeBtn = document.querySelector(".close-btn");
+const editBtn = document.querySelector(".edit-btn");
+const modal = document.querySelector(".modal");
+const overlay = document.querySelector(".overlay");
 
 //events:
 
@@ -19,6 +23,11 @@ selectFilter.addEventListener("change", (e) => {
 document.addEventListener("DOMContentLoaded", (e) => {
   const todos = getAllTodos();
   createTodos(todos);
+});
+
+closeBtn.addEventListener("click", (e) => {
+  modal.classList.add("hidden");
+  overlay.classList.add("hidden");
 });
 
 //functions:
@@ -42,7 +51,7 @@ function addNewTodo(e) {
 
 function createTodos(todos) {
   //create todos on dom
-  result = "";
+  let result = "";
 
   todos.forEach((todo) => {
     result += `<li class="todo">
@@ -119,11 +128,11 @@ function checkTodo(e) {
 }
 
 function editTodo(e) {
-  const newInput = 
+  // const newInput =
   const todos = getAllTodos();
   const todoId = Number(e.target.dataset.todoId);
   const todo = todos.find((t) => t.id === todoId);
-  todo.title = 
+  // todo.title =
 }
 
 //localStorage
