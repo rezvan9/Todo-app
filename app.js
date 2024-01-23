@@ -8,9 +8,11 @@ const todoForm = document.querySelector(".todo-form");
 const todoList = document.querySelector(".todolist");
 const selectFilter = document.querySelector(".todo-filter");
 const closeBtn = document.querySelector(".close-btn");
-const editBtn = document.querySelector(".edit-btn");
+// const editBtn = document.querySelector(".edit-btn");
 const modal = document.querySelector(".modal");
 const overlay = document.querySelector(".overlay");
+const editInput = document.querySelector(".edit-input");
+const editForm = document.querySelector(".edit-form");
 
 //events:
 
@@ -26,8 +28,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
 });
 
 closeBtn.addEventListener("click", (e) => {
-  modal.classList.add("hidden");
-  overlay.classList.add("hidden");
+  addClass();
 });
 
 //functions:
@@ -128,11 +129,27 @@ function checkTodo(e) {
 }
 
 function editTodo(e) {
-  // const newInput =
+  e.preventDefault();
+  removeClass();
   const todos = getAllTodos();
   const todoId = Number(e.target.dataset.todoId);
   const todo = todos.find((t) => t.id === todoId);
-  // todo.title =
+  editInput.value = todo.title;
+
+  editForm.addEventListener("submit", (e) => {
+    todo.title = e.target.value;
+    addClass();
+  });
+}
+
+function addClass() {
+  modal.classList.add("hidden");
+  overlay.classList.add("hidden");
+}
+
+function removeClass(){
+overlay.classList.remove("hidden");
+modal.classList.remove("hidden");
 }
 
 //localStorage

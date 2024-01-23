@@ -106,9 +106,8 @@ button > i {
   background-color: #9ec8b9;
   border: 2px solid #092635;
   border-radius: 15px;
+  margin: -30rem auto;
   position: relative;
-  top: -30rem;
-  left: 13.7rem;
   z-index: 2;
 }
 
