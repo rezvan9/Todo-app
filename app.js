@@ -129,7 +129,6 @@ function checkTodo(e) {
 }
 
 function editTodo(e) {
-  e.preventDefault();
   removeClass();
   const todos = getAllTodos();
   const todoId = Number(e.target.dataset.todoId);
@@ -137,7 +136,10 @@ function editTodo(e) {
   editInput.value = todo.title;
 
   editForm.addEventListener("submit", (e) => {
-    todo.title = e.target.value;
+    e.preventDefault();
+    todo.title = editInput.value;
+    saveAllTodos(todos);
+    filterTodos();
     addClass();
   });
 }
@@ -147,9 +149,9 @@ function addClass() {
   overlay.classList.add("hidden");
 }
 
-function removeClass(){
-overlay.classList.remove("hidden");
-modal.classList.remove("hidden");
+function removeClass() {
+  overlay.classList.remove("hidden");
+  modal.classList.remove("hidden");
 }
 
 //localStorage
