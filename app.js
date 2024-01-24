@@ -8,7 +8,6 @@ const todoForm = document.querySelector(".todo-form");
 const todoList = document.querySelector(".todolist");
 const selectFilter = document.querySelector(".todo-filter");
 const closeBtn = document.querySelector(".close-btn");
-// const editBtn = document.querySelector(".edit-btn");
 const modal = document.querySelector(".modal");
 const overlay = document.querySelector(".overlay");
 const editInput = document.querySelector(".edit-input");
